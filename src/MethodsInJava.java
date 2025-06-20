@@ -1,10 +1,12 @@
 public class MethodsInJava {
+    // void datatype means no data will be returned
     public static void main(String[] args) {
         // Learning Method
 
-        int levelCompleted = 5;
-        int bonus = 200;
-        calculateScore(true, 800, levelCompleted, bonus);
+//        int levelCompleted = 5;
+//        int bonus = 200;
+        calculateScore(true, 800, 5, 100);
+        calculateScore(true, 10_000, 8,200);
 
     }
 
