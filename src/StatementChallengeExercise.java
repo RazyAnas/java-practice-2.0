@@ -1,7 +1,18 @@
 public class StatementChallengeExercise {
     public static void main(String[] args) {
-        System.out.println(isPrime(3));
+//        System.out.println(isPrime(3));
+        int count = 0;
+        for (int wholeNumber = 0; wholeNumber < 50; wholeNumber++){
+            if (isPrime(wholeNumber)){
+                count++;
+                if (count == 3){
+                    break;
+                }
+            }
+        }
+        System.out.println(count);
     }
+
     public static boolean isPrime(int num){
         if (num <= 2){
             return (num == 2);
