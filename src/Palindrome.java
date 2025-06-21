@@ -1,6 +1,6 @@
 public class Palindrome {
     public static void main(String[] args) {
-        System.out.println(isPalindrome(121));
+        System.out.println(isPalindrome(155551));
     }
     public static boolean isPalindrome(int number){
         // how to find Palindrome?:
