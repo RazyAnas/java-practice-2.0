@@ -6,6 +6,23 @@ public class Account {
     private String email;
     private int phoneNumber;
 
+    // Constructor
+    public Account(){
+        this(999, 80_000, "Unknown", "default address", 0);
+        System.out.println("Empty constructor was called");
+    }
+    public Account(int number, int balance, String name, String customerEmail, int customerNumber){
+        System.out.println("Account constructor with parameters was called ");
+        this.number = number;
+        this.balance = balance;
+        this.name = name;
+        customerEmail = email;
+        customerNumber = phoneNumber;
+    }
+    public Account (String name, String customerEmail, int customerNumber){
+        this(789, 123, name, customerEmail, customerNumber);
+    }
+
     // getters and setters for each instance variable
     public int getNumber() {
         return number;
