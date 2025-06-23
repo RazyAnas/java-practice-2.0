@@ -1,29 +1,46 @@
-/*
-QUESTION: Complex Number Operations
-
-Write a class named `ComplexNumber` with the following:
-
-Fields:
-- private double real
-- private double imaginary
-
-Constructor:
-- ComplexNumber(double real, double imaginary)
-
-Methods:
-1. `getReal()` – returns the real part
-2. `getImaginary()` – returns the imaginary part
-3. `add(double real, double imaginary)` – adds to the current real and imaginary values
-4. `add(ComplexNumber other)` – adds another ComplexNumber to this one
-5. `subtract(double real, double imaginary)` – subtracts from the current real and imaginary values
-6. `subtract(ComplexNumber other)` – subtracts another ComplexNumber from this one
-
-NOTE:
-- All methods should be public.
-- No main method should be added to the class.
-*/
-
 package ComplexNumberOperations;
 
 public class ComplexNumber {
+    private double real;
+    private double imaginary;
+
+    // Constructor
+    public ComplexNumber(double real, double imaginary) {
+        this.real = real;
+        this.imaginary = imaginary;
+    }
+
+    // Getter for real part
+    public double getReal() {
+        return real;
+    }
+
+    // Getter for imaginary part
+    public double getImaginary() {
+        return imaginary;
+    }
+
+    // Add method with real and imaginary parameters
+    public void add(double real, double imaginary) {
+        this.real += real;
+        this.imaginary += imaginary;
+    }
+
+    // Add method with another ComplexNumber
+    public void add(ComplexNumber other) {
+        this.real += other.getReal();
+        this.imaginary += other.getImaginary();
+    }
+
+    // Subtract method with real and imaginary parameters
+    public void subtract(double real, double imaginary) {
+        this.real -= real;
+        this.imaginary -= imaginary;
+    }
+
+    // Subtract method with another ComplexNumber
+    public void subtract(ComplexNumber other) {
+        this.real -= other.getReal();
+        this.imaginary -= other.getImaginary();
+    }
 }
