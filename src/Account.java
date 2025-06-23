@@ -1,12 +1,12 @@
 public class Account {
+    // declaring instance variables
     private int number;
     private int balance;
     private String name;
     private String email;
     private int phoneNumber;
 
-    // getters and setters
-
+    // getters and setters for each instance variable
     public int getNumber() {
         return number;
     }
@@ -53,6 +53,7 @@ public class Account {
         return "Successfully Deposited an amount of " + fund + ", New Balance = " + getBalance();
     }
     public String withdrawFund(int fund){
+        // if balance not enough to be withdrawn return a statement else withdraw the desired funds
         if (getBalance()-fund < 0){
             return "Not enough balance to withdraw!";
         } else if (getBalance()-fund >= 0) {
