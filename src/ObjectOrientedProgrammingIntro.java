@@ -16,11 +16,12 @@ public class ObjectOrientedProgrammingIntro {
 
     public static void main(String[] args) {
         // using Car class here by defining object
-         Car car = null;
-//        Car car = new Car();
+
+        Car car = new Car();
 //        car.make = "Porsche";
         car.setMake("Porsche");
         car.setModel("Carrera");
+
         car.setDoors(2);
         car.setColor("black");
         car.setConvertible(true);
