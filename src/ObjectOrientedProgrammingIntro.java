@@ -16,11 +16,17 @@ public class ObjectOrientedProgrammingIntro {
 
     public static void main(String[] args) {
         // using Car class here by defining object
-
-        Car car = new Car();
+         Car car = null;
+//        Car car = new Car();
 //        car.make = "Porsche";
+        car.setMake("Porsche");
+        car.setModel("Carrera");
+        car.setDoors(2);
+        car.setColor("black");
+        car.setConvertible(true);
 //        car.model = "Carrera";
 //        car.color = "Red";
+
         System.out.println(car.getMake());
         System.out.println(car.getModel());
         // requires getters and setters
@@ -31,5 +37,6 @@ public class ObjectOrientedProgrammingIntro {
 
         // null is a special keyword when no instance or object is assigned to the variable or field
         // fields are defined by default boolean = false, others = 0 / 0.0
+
     }
 }
