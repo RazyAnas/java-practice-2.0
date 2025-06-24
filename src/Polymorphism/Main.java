@@ -26,6 +26,10 @@ public class Main {
             Movie movie = Movie.getMovie(type, title);
             movie.watchMovie();
         }
+//        Compile time type = what Java is told the thing is.
+//        Run time type = what the thing actually is.
+//        Java is strict AF at compile time. You need to cast to access runtime features.
+
 
 
     }
