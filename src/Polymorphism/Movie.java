@@ -24,6 +24,8 @@ public class Movie {
             default -> new Movie(title);
         };
     }
+
+
 }
 
 class Adventure extends Movie {
@@ -40,6 +42,9 @@ class Adventure extends Movie {
                 "Scary Music",
                 "Something Bad Happens"
                 );
+    }
+    public void watchAdventure() {
+        System.out.println("Watching an Adventure!");
     }
 }
 
@@ -58,6 +63,9 @@ class Comedy extends Movie {
                 "Something fun Happens"
         );
     }
+    public void watchComedy() {
+        System.out.println("Watching a Comedy!");
+    }
 }
 
 
@@ -75,5 +83,8 @@ class ScienceFiction extends Movie {
                 "Suspense Music",
                 "Something creepy starts crawling..."
         );
+    }
+    public void watchScienceFiction() {
+        System.out.println("Watching a Science Fiction!");
     }
 }
