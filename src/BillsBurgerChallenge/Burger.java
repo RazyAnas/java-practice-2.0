@@ -34,6 +34,12 @@ public class Burger extends Item{
         this.extra3 = new Item("TOPPING", extra3,
                 getExtraPrice(extra3));
     }
+    public void addToppings(String extra1, String extra2){
+        this.extra1 = new Item("TOPPING", extra1,
+                getExtraPrice(extra1));
+        this.extra2 = new Item("TOPPING", extra2,
+                getExtraPrice(extra2));
+    }
 
     public void printItemizedList() {
         printItem("BASE BURGER", getBasePrice());
