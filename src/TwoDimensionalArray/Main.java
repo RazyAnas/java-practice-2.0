@@ -12,10 +12,16 @@ public class Main {
             System.out.println(Arrays.toString(outer));
         }
 
-        for (int i = 0; i < array.length; i++) {
-            var innerArray = array[i];
-            for (int j = 0; j < innerArray.length; j++) {
-                System.out.println(array[i][j] + " ");
+//        for (int i = 0; i < array.length; i++) {
+//            var innerArray = array[i];
+//            for (int j = 0; j < innerArray.length; j++) {
+//                System.out.println(array[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+        for (var outer: array) {
+            for (var element : outer) {
+                System.out.print(element + " ");
             }
             System.out.println();
         }
