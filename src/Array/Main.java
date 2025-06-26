@@ -21,11 +21,41 @@ public class Main {
         System.out.println("last = " + firstTen[arrayLength - 1]);
 
         int[] newArray;
-        newArray = new int[]{5, 4, 3, 2, 1};
-
+//        newArray = new int[]{5, 4, 3, 2, 1};
+        newArray = new int[5];
+        for (int i = 0; i < newArray.length; i++) {
+            newArray[i] = newArray.length - i;
+            System.out.print(newArray[i] + " ");
+        }
+        System.out.println();
         for (int i = 0 ; i < newArray.length; i++){
             System.out.print(newArray[i] + " ");
         }
+        System.out.println();
+        // for each loop
+        // for array or other collection
+        // one element at a time, from first element to the last
+        /*
 
+
+        Enhanced for loop:
+        for (declaration : collection) {
+            **block of statements**
+        }
+        declaration = type, or variable name, usually a local variable with the same type as an element in the array!
+
+         */
+
+        for (int object : newArray) {
+            System.out.print(object + " ");
+        }
+        System.out.println();
+        System.out.println(Arrays.toString(newArray));
+
+        Object[] objectArray = new Object[3];
+        objectArray[0] = "Hello";
+        objectArray[1] = new StringBuilder("World");
+        objectArray[2] = newArray;
+        System.out.println(Arrays.toString(objectArray));
     }
 }
