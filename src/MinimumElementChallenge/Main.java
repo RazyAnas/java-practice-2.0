@@ -22,7 +22,7 @@ public class Main {
             numbers[i] = Integer.parseInt(args[i].trim());
         }
 //        System.out.println(Arrays.toString(numbers));
-        int highest = 0;
+        int minimum = 0;
         for (int i = 0; i < numbers.length -1; i++) {
             // find the highest number
             // Trick to Remember:
@@ -31,13 +31,13 @@ public class Main {
             //        store
             //        shift
             //        restore
-            if (numbers[i]>numbers[i+1]){
+            if (numbers[i]<numbers[i+1]){
                 int temp = numbers[i];
                 numbers[i] = numbers [i+1];
                 numbers[i+1] = temp;
-                highest = temp;
+                minimum = temp;
             }
         }
-        System.out.println(highest);
+        System.out.println(minimum);
     }
 }
