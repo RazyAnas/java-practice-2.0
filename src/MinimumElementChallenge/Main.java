@@ -19,7 +19,7 @@ public class Main {
 //        System.out.println(Arrays.toString(args));
         int[] numbers = new int[args.length];
         for (int i = 0; i < args.length; i++ ) {
-            numbers[i] = Integer.parseInt(args[i]);
+            numbers[i] = Integer.parseInt(args[i].trim());
         }
 //        System.out.println(Arrays.toString(numbers));
         int highest = 0;
