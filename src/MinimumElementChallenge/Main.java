@@ -22,8 +22,8 @@ public class Main {
             numbers[i] = Integer.parseInt(args[i].trim());
         }
 //        System.out.println(Arrays.toString(numbers));
-        int minimum = 0;
-        for (int i = 0; i < numbers.length -1; i++) {
+        int minimum = numbers[0];
+        for (int i = 1; i < numbers.length; i++) {
             // find the highest number
             // Trick to Remember:
             //    temp → holds temporary value
@@ -31,11 +31,8 @@ public class Main {
             //        store
             //        shift
             //        restore
-            if (numbers[i]<numbers[i+1]){
-                int temp = numbers[i];
-                numbers[i] = numbers [i+1];
-                numbers[i+1] = temp;
-                minimum = temp;
+            if (numbers[i]<minimum){
+                minimum = numbers[i];
             }
         }
         System.out.println(minimum);
