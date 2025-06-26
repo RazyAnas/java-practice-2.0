@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Enter digits separated by comma to find the minimum number!");
         readIntegers();
     }
 
@@ -24,17 +25,10 @@ public class Main {
 //        System.out.println(Arrays.toString(numbers));
         int minimum = numbers[0];
         for (int i = 1; i < numbers.length; i++) {
-            // find the highest number
-            // Trick to Remember:
-            //    temp → holds temporary value
-            //    3-step swap:
-            //        store
-            //        shift
-            //        restore
             if (numbers[i]<minimum){
                 minimum = numbers[i];
             }
         }
-        System.out.println(minimum);
+        System.out.println("MINIMUM = " + minimum);
     }
 }
