@@ -1,4 +1,4 @@
-package Enum;
+package EnumProject;
 
 public class main {
 }
