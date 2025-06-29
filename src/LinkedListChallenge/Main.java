@@ -7,27 +7,38 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static final LinkedList<Place> places = new LinkedList<>();
+    public static LinkedList<Place> places = new LinkedList<>(); // if already a place exist, it cannot be added
     private static ListIterator<Place> iterator = places.listIterator();
 
     public static void main(String[] args) {
 
 
         // add places to the list - khunti should be the first element in my list
-        places.add(new Place("Chennai", 2500)); // Gurgaon --> Chennai
-        places.add(new Place("Khunti", 1));
-        places.add(new Place("Ranchi", 45.8)); // khunti --> Ranchi
-        places.add(new Place("Gurgaon", 1800)); // Ranchi --> Gurgaon
-        places.add(new Place("Vellore", 2580)); // Chennai --> Vellore
+        addPlace(new Place("Chennai", 2500));
+        addPlace(new Place("Khunti", 1));
+        addPlace(new Place("Khunti", 1)); // This will now be ignored
+        addPlace(new Place("Ranchi", 45.8));
+        addPlace(new Place("Gurgaon", 1800));
+        addPlace(new Place("Vellore", 2580));
 
         // list.sort(Comparator.comparing(Class::method));
-        places.sort(Comparator.comparing((Place::getDoori))); // for sorting based on distance
+        places.sort(Comparator.comparing((Place::doori))); // for sorting based on distance
         iterator = places.listIterator(); // ✅ add this line
         System.out.println(places);
 
 
         getInputs();
     }
+    public static void addPlace(Place newPlace) {
+        for (Place p : places) {
+            if (p.getJagah().equalsIgnoreCase(newPlace.getJagah())) {
+                System.out.println("Duplicate " + p + " found, skipping...");
+                return; // already exists, so don't add
+            }
+        }
+        places.add(newPlace); // only add if not duplicate
+    }
+
 
     private static void getInputs() {
         Scanner sc = new Scanner(System.in);
