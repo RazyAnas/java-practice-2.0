@@ -22,6 +22,6 @@ public class Album {
 
     @Override
     public String toString() {
-        return String.format("Album [%s] contains the following songs: %s", albumName, songLinkedList);
+        return String.format("Album: {%s}: %s", albumName, songLinkedList);
     }
 }

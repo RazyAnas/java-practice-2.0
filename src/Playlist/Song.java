@@ -5,6 +5,6 @@ public record Song(String title, String duration) {
 
     @Override
     public String toString() {
-        return String.format("Title: %s Duration:%s", title, duration);
+        return String.format("%s - %s", title, duration);
     }
 }
