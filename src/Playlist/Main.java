@@ -85,7 +85,7 @@ public class Main {
                 case 'F' -> interaction('F'); // forward the pointer
                 case 'B' -> interaction('B'); // backward the pointer
                 case 'L' -> interaction('L'); // list the places
-                case 'R' -> interaction('R'); // list the places
+                case 'R' -> interaction('R'); // Repeat
                 case 'M' -> {
                     flag = false; // quit previous menu, before starting a new menu
                     interaction('M');
