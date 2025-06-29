@@ -101,6 +101,8 @@ public class Main {
     }
 
 public static char previousChoice = '\0'; // no choice selected
+
+    // sorry for the boiler-plates :(
     private static void interaction(char choice) {
 
 
