@@ -8,20 +8,20 @@ public abstract class ProductForSale {
     double price;
     String description;
 
-    public String getType() {
-        return type;
-    }
-
     public ProductForSale(String type, double price, String description) {
         this.type = type;
         this.price = price;
         this.description = description;
     }
 
+    public String getType() {
+        return type;
+    }
+
     // Class should also have methods to: getSalesPrice (concrete) --> takes quantity and returns the quantity*price
     public double getSalesPrice(int quantity) {
 
-        return quantity*price;
+        return quantity * price;
     }
 
     // method to: printPricedItem (concrete) --> takes quantity and print itemized line item order with quantity and line-item price

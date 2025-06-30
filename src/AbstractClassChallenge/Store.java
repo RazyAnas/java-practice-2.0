@@ -10,6 +10,7 @@ public class Store {
 
     static ArrayList<ProductForSale> products = new ArrayList<>(); // "list of products for sale"
     static ArrayList<OrderItem> orderList = new ArrayList<>(); // making order list
+
     public static void main(String[] args) {
 
         // defining our store stock
@@ -38,13 +39,13 @@ public class Store {
         }
 
         // checkout and total
-        System.out.printf("_".repeat(40) + "\nTOTAL PRICE = ₹%s\n",totalPrice);
+        System.out.printf("_".repeat(40) + "\nTOTAL PRICE = ₹%s\n", totalPrice);
     }
 
     public static void addItemToOrder(int quantity, int productIndex) { // "add an item to the order"
+
         // order items from stock
         orderList.add(new OrderItem(quantity, products.get(productIndex)));
-
     }
 
     public static void displayStoreProducts() {
