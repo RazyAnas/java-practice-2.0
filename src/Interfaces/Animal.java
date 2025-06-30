@@ -1,5 +1,6 @@
 package Interfaces;
 
+// interfaces never gets instantiated and won't have a subclass that gets instantiated
 interface FlightEnabled {
 
     double MILES_TO_KM = 1.60934; // constant
