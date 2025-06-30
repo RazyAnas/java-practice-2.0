@@ -1,5 +1,71 @@
 package Interfaces;
 
+enum FlightStages implements Trackable {
+    GROUNDED,
+    LAUNCH,
+    CRUISE,
+    DATA_COLLECTION;
+
+    @Override
+    public void track() {
+
+        if (this != GROUNDED) {
+            System.out.println("Monitoring " + this);
+        }
+    }
+}
+
+record DragonFly(String name, String type) implements FlightEnabled {
+
+
+    @Override
+    public void takeOff() {
+
+    }
+
+    @Override
+    public void land() {
+
+    }
+
+    @Override
+    public void fly() {
+
+    }
+}
+
+
+class Satellite implements  OrbitEarth {
+//    attempting to assign weaker access privileges ('package-private'); was 'public'
+//    void achieveOrbit() {
+//        System.out.println("Orbit achieved!");
+//    }
+
+    public void achieveOrbit() {
+        System.out.println("Orbit achieved!");
+    }
+
+
+    @Override
+    public void takeOff() {
+
+    }
+
+    @Override
+    public void land() {
+
+    }
+
+    @Override
+    public void fly() {
+
+    }
+}
+
+interface OrbitEarth extends  FlightEnabled {
+
+    void achieveOrbit();
+}
 // interfaces never gets instantiated and won't have a subclass that gets instantiated
 interface FlightEnabled {
 
@@ -15,6 +81,8 @@ interface FlightEnabled {
     // if you omit and access modifier on an interface member, it's implicitly public
     // private modifier isn't allowed in an interface member --> compiler error
 
+    // interface doesn't implement another interface
+    // both records and enums can implement interfaces
 }
 
 interface Trackable {
