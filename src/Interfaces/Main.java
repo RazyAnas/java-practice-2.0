@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
-
+// interfaces aren't class
     public static void main(String[] args) {
 
         Bird bird = new Bird();
