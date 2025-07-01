@@ -97,12 +97,14 @@ public class SearchTree implements NodeList {
 
     }
 
-// performRemoval(), takes two ListItems, the item to be removed and its parent. It doesn't return anything and is declared as --> private.
-// Call this method from removeItem() when the item is found.
+    // performRemoval(), takes two ListItems, the item to be removed and its parent. It doesn't return anything and is declared as --> private.
+    // Call this method from removeItem() when the item is found.
     // leftLink <- Root Node -> RightLink
-
+    // (ChatGPT) Why is parent needed?:
+    // => Because in a tree, you can’t "look back" — nodes only know their children.
     private void performRemoval(ListItem item, ListItem parent) {
-
+        this.root = parent;
+        removeItem(item);
     }
 
 
