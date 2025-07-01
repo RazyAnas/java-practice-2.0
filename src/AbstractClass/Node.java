@@ -1,6 +1,6 @@
 package AbstractClass;
 
-public class Node extends ListItem{ // extends ListItem
+public class Node extends ListItem { // extends ListItem
 
     // constructor --> takes Object and pass to parent
     public Node(Object value) {
@@ -34,6 +34,20 @@ public class Node extends ListItem{ // extends ListItem
     //  takes a ListItem and compares it to the ListItem that called this method. Use value from ListItem for comparison.
     //  If this value is greater than the value that was passed in, then it should return a number greater than zero.
     //  If vice versa, then it should return a number less than zero, and zero if equal.
+    /*
+    Key Aspects of compareTo():
+    Implementation:
+    Classes that need a natural ordering implement the Comparable interface and define the compareTo() method.
+
+    Parameters:
+    It takes a single argument, which is another object of the same type as the object on which the method is called.
+    Return Values:
+
+    Negative Integer: The current object is lexicographically less than the argument object.
+    Zero: The current object is lexicographically equal to the argument object.
+    Positive Integer: The current object is lexicographically greater than the argument object.
+
+     */
     @Override
     int compareTo(ListItem item) {
         if(item != null){

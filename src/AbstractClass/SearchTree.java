@@ -1,36 +1,21 @@
 package AbstractClass;
 
-// implements NodeList
-public class MyLinkedList implements NodeList {
-    // one field of type ListItem called root
-    private ListItem root;
+// SearchTree (concrete class) --> implements NodeList.
+public class SearchTree implements NodeList {
+    private ListItem root; // one field of type ListItem called root
 
-    // constructor for root
-    public MyLinkedList(ListItem root) {
+    // constructor
+    public SearchTree(ListItem root) {
         this.root = root;
     }
 
-    // four methods
+    // 5 methods
+
     @Override
     public ListItem getRoot() {
-        return root; // getter for root
+        return null;
     }
 
-
-    // takes a ListItem and returns true if it was added successfully or false otherwise --> added to ListItem
-    // If the item is already present, it doesn't get added.
-    // Use compareTo() to place the item in its proper order.
-    // What is MyLinkedList.addItem() supposed to do?
-    // We are adding a new ListItem in sorted order (like 3(root-head) -> 5 -> 10)
-    /*
-    Question:
-    TIP: The rules for adding an item to the linked tree are:
-      If the head of the tree is null, make the head refer to the item to be added.
-      If the item to be added is less than the current item in the tree, add the item before the current item (i.e., make the previous item's "next" refer to the new item, and the new item's "next" refer to the current item).
-      If the item to be added is greater than the current item, move onto the next item and compare again (if there is no next item, then that is where the new item belongs).
-     */
-
-    // head of the tree = root --> is just a variable pointing to the (head) node in the linked list.
     @Override
     public boolean addItem(ListItem item) {
 
@@ -68,9 +53,6 @@ public class MyLinkedList implements NodeList {
         return false;
     }
 
-    // If removing root, update root = root.next()
-    // If removing middle, relink previous and next
-    // If removing last, set previous.setNext(null)
     @Override
     public boolean removeItem(ListItem item) {
 
@@ -110,17 +92,18 @@ public class MyLinkedList implements NodeList {
         return false;
     }
 
-    // If the root is null it prints out: The list is empty, otherwise print each value on a separate line.
     @Override
     public void traverse(ListItem root) {
 
-        if (this.root != null) {
-            while (root.next() != null) {
-                System.out.println(root.getValue());
-                root = root.next();
-            }
-        } else {
-            System.out.println("The list is empty");
-        }
     }
+
+// performRemoval(), takes two ListItems, the item to be removed and its parent. It doesn't return anything and is declared as --> private.
+// Call this method from removeItem() when the item is found.
+    // leftLink <- Root Node -> RightLink
+
+    private void performRemoval(ListItem item, ListItem parent) {
+
+    }
+
+
 }
