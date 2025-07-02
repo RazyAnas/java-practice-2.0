@@ -58,6 +58,10 @@ class StudentGPAComparator implements Comparator<Student> {
 class Student implements Comparable<Student> {
 
     private static int LAST_ID = 1000; // LAST_ID is a constant
+    // static int LAST_ID = 1000;
+    //    This is a shared counter for all students.
+    //    Every new student gets a new unique id using this.
+    //    If it was just int LAST_ID = 1000;, each student would start from 1000 → all would have same ID.
     private static Random random = new Random();
 
     String name;
