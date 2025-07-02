@@ -20,6 +20,12 @@ public class Main {
         };
 
         Layer<River> riverLayer = new Layer<>(majorUSRivers); // render
+
+        riverLayer.addElements(
+                new River("Colorado", "40.4754, -105.8582", "37.58487, -114.7724"),
+                new River("Delaware", "42.2026, -75.0085", "39.4955, -75.55592")
+        );
+
         riverLayer.renderLayer();
     }
 }
