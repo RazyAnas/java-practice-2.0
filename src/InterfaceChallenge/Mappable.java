@@ -46,7 +46,7 @@ public interface Mappable {
     // include a default method called toJSON() that prints type, label, marker
     default String toJSON() {
         // ("\"type\": \"" + getShape() + ", \"label\": " + getLabel() + ", \"marker\": " + getMarker())
-        return String.format("\"type\": \"%s\", \"label\": \"%s\", \"marker\": \"%s\", \"name\": \"%s\", \"%s\": \"%s\"",
+        return String.format("\"type\": \"%s\", \"label\": \"%s\", \"marker\": \"%s\", \"name\": \"%s\", \"%s\": \"%s\"",  // there is an easy way just use String block and add .format
                 getShape(), getLabel(), getMarker(), getName(), getTerm(), getType());
 
     }
