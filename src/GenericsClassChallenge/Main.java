@@ -19,7 +19,7 @@ public class Main {
                 new River("Missouri", "47.9239, -111.4958", "38.8146, -90.0659")
         };
 
-        Layer<River> riverLayer = new Layer<>(majorUSRivers);
+        Layer<River> riverLayer = new Layer<>(majorUSRivers); // render
         riverLayer.renderLayer();
     }
 }
