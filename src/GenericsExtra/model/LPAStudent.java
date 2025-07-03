@@ -1,4 +1,4 @@
-package GenericsExtra;
+package GenericsExtra.model;
 
 public class LPAStudent extends Student {
 

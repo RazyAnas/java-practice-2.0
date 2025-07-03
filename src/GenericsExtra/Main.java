@@ -1,7 +1,20 @@
 package GenericsExtra;
 
+import GenericsExtra.model.*;
+import GenericsExtra.util.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
+// record
+record Employee(String name) implements QueryItem {
+
+    @Override
+    public boolean matchFieldValue(String fieldName, String value) {
+        return false;
+    }
+}
+
 // check comments at the bottom for more info
 public class Main {
 
@@ -17,7 +30,7 @@ public class Main {
 //        printList(students);
         printMoreList(students);
 
-        List<LPAStudent> lpaStudents  = new ArrayList<>();
+        List<LPAStudent> lpaStudents = new ArrayList<>();
         for (int i = 0; i < studentCount; i++) {
             lpaStudents.add(new LPAStudent());
         }
@@ -28,6 +41,13 @@ public class Main {
         testList(new ArrayList<>(List.of("Able", "Barry", "Charlie")));
         testList(new ArrayList<>(List.of(5, 10, 25, 89)));
 
+        var queryList = new QueryList<>(lpaStudents);
+        var matches = queryList.getMatches(
+                "Course", "Python");
+        printMoreList(matches);
+
+        var student2021 = QueryList.getMatches(students, "YearStarted", "2021");
+        printMoreList(student2021);
     }
 
     public static void printMoreList(List<? extends Student> students) { // <? extends Student> --> wildcard in the type argument, a lower bound means it can be student or any parent of student not subtype of student represented by: <? super Student>
