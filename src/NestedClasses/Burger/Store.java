@@ -2,10 +2,12 @@ package NestedClasses.Burger;
 
 public class Store {
     public static void main(String[] args) {
-        Meal regularMeal = new Meal();
+        // Regular meal object initialize
+        Meal regularMeal = new Meal(); // no conversion rate = total * 1
         System.out.println(regularMeal);
 
-        Meal USRegularMeal = new Meal(0.68);
+        // USRegularMeal with conversion rate --> overloaded
+        Meal USRegularMeal = new Meal(0.68); // multiply this by the total
         System.out.println(USRegularMeal);
     }
 }
