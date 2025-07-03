@@ -49,7 +49,7 @@ public class Meal {
 
          // Constructor --> that also sets base price for burger from the meal burger
          public Item(String name, String type) {
-             this(name, type, type.equals("burger") ? Meal.this.price : 0); // if the item is burger base price is valid, inner class has direct access to the outer class attributes even private ones
+             this(name, type, type.equals("burger") ? Meal.this.price : 0); // if the item is burger base price is valid, inner class has direct access to the outer class attributes even private ones.
          }
 
          // constructor with price field
@@ -62,7 +62,7 @@ public class Meal {
          // item toString() method
          @Override
          public String toString() {
-             return "%10s%15s $%.2f".formatted(type, name, // 10-wide right-aligned string, 15-wide right-aligned string, space, $, float with 2 decimals
+             return "%10s%15s $%.2f".formatted(type, name, // 10-wide right-aligned string, 15-wide right-aligned string, space, $, float with 2 decimals.
                      getPrice(price, conversionRate));
          }
 
