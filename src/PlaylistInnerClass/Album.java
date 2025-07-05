@@ -1,7 +1,6 @@
 package PlaylistInnerClass;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 // album class from playlist challenge
 public class Album {
@@ -11,7 +10,7 @@ public class Album {
 //    LinkedList<Song> songLinkedList = new LinkedList<>(); // "HAS A" SONG LIST
 
     public Album(String albumName, ArrayList<Song> songLinkedList) {
-        Album.albumName = albumName;
+//        Album.albumName = albumName;
         SongList.setSongs(songLinkedList);
     }
 
@@ -20,10 +19,10 @@ public class Album {
     }
 
     public void addToPlaylist(String playlistTitle, ArrayList<Song> playlist) {
-
-        SongList.add(new )
-
-        Album.SongList
+//
+//        SongList.add(new);
+//
+//        Album.SongList
     }
 
 
@@ -50,10 +49,10 @@ public class Album {
             return songs;
         }
 
-        @Override
-        public String toString() {
-            return String.format("Album: {%s}: %s", Album.albumName, songs);
-        }
+//        @Override
+//        public String toString() {
+//            return String.format("Album: {%s}: %s", Album.albumName, songs);
+//        }
 
         // add() accepts type Song parameter.
         public static boolean add(Song song) {
