@@ -66,7 +66,13 @@ public class Main {
 
         // ------------------------------- Mini Challenge 7 ---------------------------------
 
+        System.out.println(useSupplierLambda(iLoveJava));
+    }
 
+    // ------------------------------- Mini Challenge 7 ---------------------------------
+
+    public static String useSupplierLambda(Supplier<String> supplier) {
+       return supplier.get();
     }
 
     // ------------------------------- Mini Challenge 4 ---------------------------------
