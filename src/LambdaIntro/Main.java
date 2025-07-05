@@ -46,8 +46,8 @@ public class Main {
         // Java takes its clue from the reference type, in the context of the lambda expression usage
         // Only one method allowed = functional interface = allowed in lambda
 
-        // annotation --> check if its a functional interface or not?
-        @FunctionalInterface
+        // annotation --> check if it's a functional interface or not?
+//        @FunctionalInterface
         interface EnhancedComparator<T> extends Comparator<T> {
 
             int secondLevel(T o1, T o2);
