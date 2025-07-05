@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public class Main {
@@ -59,14 +60,20 @@ public class Main {
 
         System.out.println(everySecondCharacter(everySecondChar, "1234567890"));
 
+        // ------------------------------- Mini Challenge 6 ---------------------------------
+
+        Supplier<String> iLoveJava = () -> "I love java!";
+
+        // ------------------------------- Mini Challenge 7 ---------------------------------
+
+
     }
 
     // ------------------------------- Mini Challenge 4 ---------------------------------
-
+    // supplier interface
     public static String everySecondCharacter(Function<String, String> func, String source) {
         return func.apply(source);
     }
-
 
 // ------------------------------- Mini Challenge 2 ---------------------------------
 
