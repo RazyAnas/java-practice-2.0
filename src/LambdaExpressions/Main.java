@@ -32,15 +32,25 @@ public class Main {
         // prefix = "NATO";  --> wrong --> Variable used in lambda expression should be final or effectively final
 
         /*
-
         What is functional programming?:
 
         Functional Programming = style of coding where you:
         Give inputs ➜ Get output ➜ Done.
         No changing variables, no messing with memory.
         Focus on functions that take data → return result
-        Not on "how" the computer does it (like loops or step-by-step)
-
+        Not on "how" the computer does it (like loops or step-by-step).
          */
+
+        int result = calculator((var a , var b) -> a + b, 5,2);
+        var result2 = calculator(( a , b) -> a / b, 10.0,2.5);
+        var result3 = calculator((a,b) -> a.toUpperCase() + " " + b.toUpperCase(), "anas", "razy");
+
+    }
+
+    public static <T> T calculator(Operation<T> function, T value1, T value2) {
+
+        T result = function.operate(value1, value2);
+        System.out.println("Result of operation: " + result);
+        return result;
     }
 }
