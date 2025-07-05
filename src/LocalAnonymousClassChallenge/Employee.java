@@ -1,5 +1,5 @@
 package LocalAnonymousClassChallenge;
 
-public record Employee(String firstName, String lastName, String hireDate) {
+public record Employee(String first, String last, String hireDate) {
 }
 

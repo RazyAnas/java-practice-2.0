@@ -17,60 +17,60 @@ public class Main {
 
         List<Employee> employees = new ArrayList<>(List.of(e1,e2,e3,e4,e5));
 
-        takesEmployeeList(employees);
-
-
+        printOrderedList(employees, "name");
+        System.out.println();
+        printOrderedList(employees, "years");
     }
 
     // method to take employee list as a parameter
-    public static void takesEmployeeList(List<Employee> employees) {
+    public static void printOrderedList(List<Employee> eList, String sortField) {
+
+        int currentYear = LocalDate.now().getYear();
 
         // local class inside the method
-        class LocalClass{
-            private String fullName;
-            private int yearsWorked;
-            private static List<EmployeeInfo> employeeInfoList = new ArrayList<>();
+        class MyEmployee{
 
-            public LocalClass(String fullName, int yearsWorked) {
-                this.fullName = fullName;
-                this.yearsWorked = yearsWorked;
+            Employee containedEmployee;
+            int yearsWorked;
+            String fullName;
 
-                employeeInfoList.add(new EmployeeInfo(fullName, yearsWorked));
+            public MyEmployee(Employee containedEmployee) {
+                this.containedEmployee = containedEmployee;
+                yearsWorked = currentYear - Integer.parseInt(
+                        containedEmployee.hireDate().split("/")[2]);
+                fullName = String.join(" ", containedEmployee.first(), containedEmployee.last());
             }
 
-            public static List<EmployeeInfo> getList() {
-                return employeeInfoList;
-            }
-
-        }
-
-        for (var employee : employees) {
-            String firstName = employee.firstName();
-            String lastName = employee.lastName();
-            String fullName = firstName + " " + lastName;
-
-            String[] parts = employee.hireDate().split("/");
-            int yearStarted = Integer.parseInt(parts[2]);
-            int currentYear = LocalDate.now().getYear();
-            int yearsWorked = currentYear - yearStarted;
-
-            new LocalClass(fullName, yearsWorked);
-        }
-
-        var c0 = new Comparator<EmployeeInfo>() {
             @Override
-            public int compare(EmployeeInfo o1, EmployeeInfo o2) {
-                return o1.fullName().compareTo(o2.fullName());
+            public String toString() {
+                return "%s has been an employee for %d years".formatted(
+                        fullName, yearsWorked);
+            }
+        }
+
+        List<MyEmployee> list = new ArrayList<>();
+        for (Employee employee : eList) {
+            list.add(new MyEmployee(employee));
+        }
+
+        var comparator = new Comparator<MyEmployee>() {
+
+            @Override
+            public int compare(MyEmployee o1, MyEmployee o2) {
+
+                if (sortField.equalsIgnoreCase("name")) {
+                    return o1.fullName.compareTo(o2.fullName);
+                }
+                return o1.yearsWorked - o2.yearsWorked;
             }
         };
 
-        List<EmployeeInfo> list = LocalClass.getList();
-        list.sort(c0);
-        for (EmployeeInfo info : list) {
-            System.out.println(info.fullName() + ": " + info.yearsWorked());
+
+        list.sort(comparator);
+
+        for (MyEmployee myEmployee : list) {
+            System.out.println(myEmployee);
         }
-
-
     }
 
 }
