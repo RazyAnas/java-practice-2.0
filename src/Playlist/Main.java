@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Main {
     public static ArrayList<Album> album = new ArrayList<>();
     public static LinkedList<String> playlist = new LinkedList<>();
+    public static char previousChoice = '\0'; // no choice selected
     private static ListIterator<String> iterator = playlist.listIterator();
 
     public static void main(String[] args) {
@@ -35,8 +36,6 @@ public class Main {
         songList3.add(new Song("Cold Breeze", "3:47"));
         songList3.add(new Song("Thunder Dreams", "4:05"));
 
-
-
         // storing albums in an ArrayList
         album.add(album1);
         album.add(album2);
@@ -51,7 +50,7 @@ public class Main {
         addSongsToPlaylist(album3, 4);
         System.out.println();
         System.out.println("Playlist contains: " + playlist);
-        iterator = playlist.listIterator(); // ✅ add this line
+        iterator = playlist.listIterator();
 
         menu();
     }
@@ -64,8 +63,6 @@ public class Main {
         }
 
     }
-
-
 
     private static void menu() {
         Scanner sc = new Scanner(System.in);
@@ -99,8 +96,6 @@ public class Main {
             }
         }
     }
-
-public static char previousChoice = '\0'; // no choice selected
 
     // sorry for the boiler-plates :(
     private static void interaction(char choice) {
@@ -169,8 +164,7 @@ public static char previousChoice = '\0'; // no choice selected
             } else {
                 System.out.println("No previous song played to repeat.");
             }
-        }
-        else {
+        } else {
             menu();
         }
 
@@ -178,59 +172,6 @@ public static char previousChoice = '\0'; // no choice selected
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //    public static void main(String[] args) {
