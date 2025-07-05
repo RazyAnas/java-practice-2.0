@@ -1,7 +1,10 @@
 package LambdaExpressions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.BinaryOperator;
 
 public class Main {
 
@@ -32,6 +35,7 @@ public class Main {
         // prefix = "NATO";  --> wrong --> Variable used in lambda expression should be final or effectively final
 
         /*
+
         What is functional programming?:
 
         Functional Programming = style of coding where you:
@@ -39,18 +43,57 @@ public class Main {
         No changing variables, no messing with memory.
         Focus on functions that take data → return result
         Not on "how" the computer does it (like loops or step-by-step).
+
          */
 
         int result = calculator((var a , var b) -> a + b, 5,2);
         var result2 = calculator(( a , b) -> a / b, 10.0,2.5);
         var result3 = calculator((a,b) -> a.toUpperCase() + " " + b.toUpperCase(), "anas", "razy");
 
+        var coords = Arrays.asList(
+                new double[]{47.2160, -95.2348},
+                new double[]{29.1566, -89.2495},
+                new double[]{35.1556, -90.0659}
+        );
+
+        coords.forEach(s -> System.out.println(Arrays.toString(s)));
+        BiConsumer<Double,Double> p1 = (lat, lng) ->
+                System.out.printf("[lat:%.3f lon:%.3f]%n", lat, lng);
+
+        var firstPoint = coords.get(0);
+        processPoint(firstPoint[0], firstPoint[1], p1);
+
+        System.out.println("-".repeat(10));
+        coords.forEach(s -> processPoint(s[0], s[1], p1));
+        coords.forEach(s -> processPoint(s[0], s[1],
+                (lat, lng) ->
+                        System.out.printf("[lat:%.3f lon:%.3f]%n", lat, lng)));
+
+        list.removeIf(s -> s.equalsIgnoreCase("bravo"));
+        list.forEach(System.out::println);
+
+        list.addAll(List.of("echo", "easy", "earnest"));
+        list.forEach(System.out::println);
+
+        System.out.println("-".repeat(10));
+        list.removeIf(s -> s.startsWith("ea"));
+        list.forEach(System.out::println);
     }
 
-    public static <T> T calculator(Operation<T> function, T value1, T value2) {
+    public static <T> T calculator(BinaryOperator<T> function, T value1, T value2) {
 
-        T result = function.operate(value1, value2);
+        T result = function.apply(value1, value2);
         System.out.println("Result of operation: " + result);
         return result;
     }
+
+    public static <T> void processPoint(T t1, T t2, BiConsumer<T,T> consumer) {
+        consumer.accept(t1, t2);
+    }
 }
+
+/*
+NOTE:
+"Method = box"
+"Lambda = what goes inside the box"
+ */
