@@ -59,7 +59,7 @@ public class Main {
                 System.out.println("Player 2 won this round!");
                 p2.addAll(warPile); // take away cards from the looser
                 warPile.clear();
-            }   else {
+            } else {
                 System.out.println("It's a WAR!!");
                 if (p1.size() < 4 || p2.size() < 4) {
                     System.out.println("One player doesn't have enough cards to continue WAR!");
@@ -90,10 +90,10 @@ public class Main {
 
 
         }
-        if (p1.isEmpty() || p1.size() < 4 ) {
+        if (p1.isEmpty() || p1.size() < 4) {
             Card.printDeck(p2, "🏁 Game Over! Player 2 wins the game in " + round + " rounds", 5);
         } else {
-            Card.printDeck(p1, "🏁 Game Over! Player 1 wins the game in "+ round + " rounds", 5);
+            Card.printDeck(p1, "🏁 Game Over! Player 1 wins the game in " + round + " rounds", 5);
         }
 
 
