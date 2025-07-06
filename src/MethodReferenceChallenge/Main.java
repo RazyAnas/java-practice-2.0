@@ -44,7 +44,7 @@ public class Main {
             char randomInitial = (char) ('A' + new Random().nextInt(26));
             return name + " " + randomInitial + ".";
         };
-        UnaryOperator<String> uLastName = name ->  {
+        UnaryOperator<String> uLastName = name -> {
             String[] parts = name.split(" ");
             return name + " " + new StringBuilder(parts[0]).reverse();
         };
@@ -58,11 +58,11 @@ public class Main {
     }
 
     private static String addDashes(String s) {
-        String[] part = s.split( " ");
+        String[] part = s.split(" ");
         return part[0] + "_" + part[1] + "_" + part[2];
     }
 
     private static String addSmiley(String s) {
-        return s +  " 😊" ;
+        return s + " 😊";
     }
 }
