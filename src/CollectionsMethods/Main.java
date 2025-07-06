@@ -1,15 +1,12 @@
 package CollectionsMethods;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Card.printDeck(Card.getStandardDeck()); // gives 52 cards in 4 suits
+        // Card.printDeck(Card.getStandardDeck()); // gives 52 cards in 4 suits
 
         Card[] cardArray = new Card[13];
         Card aceOfHearts = Card.getFaceCard(Card.Suit.HEART, 'A');
@@ -39,6 +36,42 @@ public class Main {
         // this method returns unmodifiable list --> if we want modifiable we need to call copyOf method
         cards = List.copyOf(kingsOfClubs);
         Card.printDeck(cards, "List Copy of Kings", 1);
+
+        List<Card> deck = Card.getStandardDeck(); // gives 52 cards in 4 suits
+        Card.printDeck(deck);
+
+        // shuffling the deck of cards
+        Collections.shuffle(deck);
+        Card.printDeck(deck, "Shuffled Deck", 4);
+
+        Collections.reverse(deck);
+        Card.printDeck(deck, "Reversed Deck of Cards:", 4);
+
+        var sortingAlgorithm = Comparator.comparing(Card::rank)
+                .thenComparing(Card::suit);
+        Collections.sort(deck, sortingAlgorithm);
+        Card.printDeck(deck, "Standard Deck sorted by rank, suit", 13);
+
+        Collections.reverse(deck);
+        Card.printDeck(deck, "Sorted by rank, suit reversed:", 13);
+
+        List<Card> kings = new ArrayList<>(deck.subList(4,8));
+        Card.printDeck(kings, "Kings in deck", 1);
+
+        List<Card> tens = new ArrayList<>(deck.subList(16, 20));
+        Card.printDeck(tens, "Tens in deck", 1);
+
+//        Collections.shuffle(deck);
+        int subListIndex = Collections.indexOfSubList(deck, tens);
+        System.out.println("sublist index for tens = " + subListIndex);
+        System.out.println("Contains = " + deck.containsAll(tens));
+
+        boolean disjoint = Collections.disjoint(deck, tens);
+        System.out.println("disjoint = " + disjoint);
+
+        boolean disjoint2 = Collections.disjoint(kings, tens);
+        System.out.println("disjoint = " + disjoint2);
+
 
     }
 }
