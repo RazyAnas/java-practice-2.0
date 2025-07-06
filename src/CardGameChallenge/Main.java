@@ -36,7 +36,6 @@ public class Main {
 
         List<Card> warPile = new ArrayList<>(0); // imaginary separate deck to deal and add cards lost and use this card pile to add it to winner's deck
         int round = 0;
-        boolean war = false;
         // if any of the player has empty deck stop the game
         while (!p1.isEmpty() && !p2.isEmpty()) {
             // game begins here
