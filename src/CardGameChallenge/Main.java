@@ -1,6 +1,9 @@
 package CardGameChallenge;
 
+import CollectionsMethods.Card;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -17,7 +20,64 @@ public class Main {
     public static void main(String[] args) {
 
         // create deck
-        List<Card> deck = new ArrayList<>();
-        deck
+        List<CollectionsMethods.Card> deck = CollectionsMethods.Card.getStandardDeck(); // gives 52 cards in 4 suits
+        Card.printDeck(deck);
+
+        // shuffle the deck cards
+        Collections.shuffle(deck);
+        Card.printDeck(deck, "Shuffled Deck", 4);
+
+        // split deck into two and give it to players
+        List<Card> p1 = new ArrayList<>(deck.subList(0, 26));  // first 26 cards for player 1
+        List<Card> p2 = new ArrayList<>(deck.subList(26, 52)); // next 26 cards for player 2
+
+        Card.printDeck(p1, "Player 1's Deck: ", 2);
+        Card.printDeck(p2, "Player 2's Deck: ", 2);
+
+//        if (p1.rank() > p2.rank()) {
+//            p1.addAll(warPile); // Winner gets all 8 cards
+//        } else if (p1FaceUp.rank() < p2FaceUp.rank()) {
+//            player2Deck.addAll(warPile);
+//        } else {
+//            // Another tie! Repeat war or end game
+//        }
+
+        List<Card> warPile = new ArrayList<>(0); // imaginary separate deck to deal and add cards lost and use this card pile to add it to winner's deck
+        int round = 1;
+
+        // if any of the player has empty deck stop the game
+        while (!p1.isEmpty() && !p2.isEmpty()) {
+            // game begins here
+            // top cards of each player
+            Card p1Card = p1.remove(0); // take + remove
+            Card p2Card = p2.remove(0);
+
+            warPile.add(p1Card);
+            System.out.println("Player 1: " + p1Card);
+            warPile.add(p2Card);
+            System.out.println("Player 2: " + p2Card);
+
+            // Winner gets card
+            if (warPile.get(0).rank() > warPile.get(1).rank()) {
+                System.out.println("Player 1 won this round!");
+                p1.addAll(warPile); // adds card to the end of the deck, take away cards from the looser
+            } else if (warPile.get(0).rank() < warPile.get(1).rank()) {
+                System.out.println("Player 2 won this round!");
+                p2.addAll(warPile); // take away cards from the looser
+            }  else {
+                System.out.println("It's a tie! Skipping WAR. Returning cards.");
+                p1.add(p1Card);
+                p2.add(p2Card);
+            }
+
+            round++;
+        }
+        if (p1.isEmpty()) {
+            Card.printDeck(p2, "🏁 Game Over! Player 2 wins the game.", 5);
+        } else {
+            Card.printDeck(p1, "🏁 Game Over! Player 1 wins the game.", 5);
+        }
+
+
     }
 }
