@@ -42,9 +42,5 @@ public class Main {
         System.out.println("/".repeat(10));
         ArrayList<String> names = new ArrayList<>(firstNames);
         names.forEach(System.out::println);
-
-
-
-
     }
 }
