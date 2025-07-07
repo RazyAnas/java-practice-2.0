@@ -32,10 +32,32 @@ public class Main {
         printData("(A) ∪ B) Union of emails (A) with phones (B)", unionAB);
 
         Set<Contact> intersectAB = new HashSet<>(emailContacts);
-        intersectAB.retainAll(phoneContacts); // keep only common data
+        intersectAB.retainAll(phoneContacts); // keep only common data, but retains data of phone
         printData("(A ∩ B) Intersect emails (A) and phones (B)",
                 intersectAB);
 
+        Set<Contact> intersectBA = new HashSet<>(phoneContacts);
+        intersectBA.retainAll(emailContacts); // keep only common data, but retains data of email
+        printData("(B ∩ A) Intersect phones (B) and emails (A)",
+                intersectBA);
+
+        Set<Contact> AMinusB = new HashSet<>(emailContacts);
+        AMinusB.removeAll(phoneContacts); // keep only uncommon data
+        printData("(A - B) emails (A) minus phones (B)",
+                AMinusB);
+
+        Set<Contact> BMinusA = new HashSet<>(phoneContacts);
+        BMinusA.removeAll(emailContacts); // keep only uncommon data
+        printData("(B - A) phones (B) minus emails (A)",
+                BMinusA);
+
+        Set<Contact> symmetricDiff = new HashSet<>(AMinusB);
+        symmetricDiff.addAll(BMinusA);
+        printData("Symmetric Difference: phones and emails", symmetricDiff);
+
+        Set<Contact> symmetricDiff2 = new HashSet<>(unionAB);
+        symmetricDiff2.removeAll(intersectAB);
+        printData("Symmetric Difference: phones and emails", symmetricDiff2);
     }
 
     public static void printData(String header, Collection<Contact> contacts) {
