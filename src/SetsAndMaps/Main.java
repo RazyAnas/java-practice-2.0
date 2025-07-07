@@ -25,6 +25,17 @@ public class Main {
         robinHood.addEmail("Gay");
         robinHood.replaceEmailIfExists("RHood@gay.com", "RHood@straightandnormal.com"); // gays are weird lets make them normal!
         System.out.println(robinHood);
+
+        Set<Contact> unionAB = new HashSet<>();
+        unionAB.addAll(emailContacts);
+        unionAB.addAll(phoneContacts);
+        printData("(A) ∪ B) Union of emails (A) with phones (B)", unionAB);
+
+        Set<Contact> intersectAB = new HashSet<>(emailContacts);
+        intersectAB.retainAll(phoneContacts); // keep only common data
+        printData("(A ∩ B) Intersect emails (A) and phones (B)",
+                intersectAB);
+
     }
 
     public static void printData(String header, Collection<Contact> contacts) {
@@ -35,4 +46,3 @@ public class Main {
         contacts.forEach(System.out::println);
     }
 }
-// done equals and hashCode
