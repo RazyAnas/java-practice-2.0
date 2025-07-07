@@ -35,4 +35,4 @@ public class Main {
         contacts.forEach(System.out::println);
     }
 }
-// done
+// done equals and hashCode
