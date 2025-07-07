@@ -26,21 +26,25 @@ public class Main {
         robinHood.replaceEmailIfExists("RHood@gay.com", "RHood@straightandnormal.com"); // gays are weird lets make them normal!
         System.out.println(robinHood);
 
+        // union
         Set<Contact> unionAB = new HashSet<>();
         unionAB.addAll(emailContacts);
         unionAB.addAll(phoneContacts);
         printData("(A) ∪ B) Union of emails (A) with phones (B)", unionAB);
 
+        // intersection
         Set<Contact> intersectAB = new HashSet<>(emailContacts);
         intersectAB.retainAll(phoneContacts); // keep only common data, but retains data of phone
         printData("(A ∩ B) Intersect emails (A) and phones (B)",
                 intersectAB);
 
+        // intersection
         Set<Contact> intersectBA = new HashSet<>(phoneContacts);
         intersectBA.retainAll(emailContacts); // keep only common data, but retains data of email
         printData("(B ∩ A) Intersect phones (B) and emails (A)",
                 intersectBA);
 
+        // Minus
         Set<Contact> AMinusB = new HashSet<>(emailContacts);
         AMinusB.removeAll(phoneContacts); // keep only uncommon data
         printData("(A - B) emails (A) minus phones (B)",
@@ -51,6 +55,7 @@ public class Main {
         printData("(B - A) phones (B) minus emails (A)",
                 BMinusA);
 
+        // symmetric difference
         Set<Contact> symmetricDiff = new HashSet<>(AMinusB);
         symmetricDiff.addAll(BMinusA);
         printData("Symmetric Difference: phones and emails", symmetricDiff);
