@@ -66,7 +66,7 @@ public class Main {
     }
 
     public static void printData(String header, Collection<Contact> contacts) {
-//  print
+        //  print
         System.out.println("-".repeat(50));
         System.out.println(header);
         System.out.println("-".repeat(50));
