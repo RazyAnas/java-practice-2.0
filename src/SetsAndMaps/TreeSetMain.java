@@ -3,6 +3,7 @@ package SetsAndMaps;
 import java.util.*;
 
 public class TreeSetMain {
+
 // Intro to TreeSet and NavigableSet
     public static void main(String[] args) {
         String divider = "_".repeat(30);
@@ -41,12 +42,27 @@ public class TreeSetMain {
         System.out.println(divider);
         System.out.printf("min = %s, first=%s %n", min.getName(), first.getName());
         System.out.printf("max = %s, last=%s %n", max.getName(), last.getName());
+
         System.out.println(divider);
 
         NavigableSet<Contact> copiedSet = new TreeSet<>(fullSet);
         System.out.println("First element = " + copiedSet.pollFirst()); // does the same but removes the element from the set also
         System.out.println("Last element = " + copiedSet.pollLast());
         copiedSet.forEach(System.out::println);
+
+        System.out.println(divider);
+
+        Contact daffy = new Contact("Daffy Duck");
+        Contact daisy = new Contact("Daisy Duck");
+        Contact snoopy = new Contact("Snoopy");
+        Contact archie = new Contact("Archie");
+
+        for (Contact c : List.of(daffy, daisy, snoopy, archie)) {
+            System.out.printf("ceiling(%s)=%s%n", c.getName(), fullSet.ceiling(c));
+            System.out.printf("higher(%s)=%s%n", c.getName(), fullSet.higher(c));
+        }
+
+        System.out.println(divider);
 
     }
 }
