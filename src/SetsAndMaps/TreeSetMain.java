@@ -44,7 +44,7 @@ public class TreeSetMain {
         System.out.println(divider);
 
         NavigableSet<Contact> copiedSet = new TreeSet<>(fullSet);
-        System.out.println("First element = " + copiedSet.pollFirst());
+        System.out.println("First element = " + copiedSet.pollFirst()); // does the same but removes the element from the set also
         System.out.println("Last element = " + copiedSet.pollLast());
         copiedSet.forEach(System.out::println);
 
