@@ -70,7 +70,7 @@ public class Task implements Comparable<Task>{
 
     @Override
     public String toString() {
-        return "%-20s %-25s %-10s %-10s %s".formatted(priority, description, priority, assignee, status);
+        return "%-20s %-25s %-10s %-10s %s".formatted(project, description, priority, assignee, status);
     }
 
     @Override
@@ -79,9 +79,10 @@ public class Task implements Comparable<Task>{
         if (o == null || getClass() != o.getClass()) return false;
 
         Task task = (Task) o;
-        if (getProject().equals(task.getProject())) return false;
-        return getDescription().equals(task.getDescription());
+        return project.equals(task.project) &&
+                description.equals(task.description);
     }
+
 
     @Override
     public int hashCode() {

@@ -8,7 +8,6 @@ public class Main {
 
     public static void main(String[] args) {
 //          <-- PREVIOUSLY -->
-//        Set<Task> tasks = TaskData.getTasks("all");
 //        sortAndPrint("All Tasks", tasks);
 //
 //        Comparator<Task> sortByPriority = Comparator.comparing(Task::getPriority);
@@ -18,26 +17,40 @@ public class Main {
 //        getUnion();
 //        getIntersect(TaskData.getTasks("all"), TaskData.getTasks("bob"));
 
-        // What is the full task list? --> this is the list of all tasks described by your manager
-        // and any additional tasks the employees have, that may not be on that list
-
         Set<Task> tasks = TaskData.getTasks("all");
-        sortAndPrint("All tasks", tasks);
 
-        // Which tasks are assigned to at least one of your 3 team members
         Set<Task> annsTasks = TaskData.getTasks("ann");
-        Set<Task> bobsTasks = TaskData.getTasks("bob");
-        Set<Task> carolsTasks = TaskData.getTasks("carol");
-        Set<Task> allAssignedTasks = new HashSet<>();
-        allAssignedTasks.addAll(annsTasks);
-        allAssignedTasks.addAll(bobsTasks);
-        allAssignedTasks.addAll(carolsTasks);
-        getDifference(allAssignedTasks, tasks);
+        Set<Task> bobsTasks = TaskData.getTasks("Bob");
+        Set<Task> carolsTasks = TaskData.getTasks("Carol");
+        List<Set<Task>> sets = List.of(annsTasks, bobsTasks, carolsTasks);
 
-        System.out.println("allAssignedTasks: " + allAssignedTasks.size());
-        System.out.println("tasks (manager): " + tasks.size());
+        Set<Task> assignedTasks = getUnion(sets);
+        sortAndPrint("Assigned Tasks", assignedTasks);
 
+        Set<Task> everyTask = getUnion(List.of(tasks, assignedTasks));
+        sortAndPrint("The True All Tasks", everyTask);
 
+        Set<Task> missingTasks = getDifference(everyTask, tasks);
+        sortAndPrint("Missing Tasks", missingTasks);
+
+        Set<Task> unassignedTasks = getDifference(tasks, assignedTasks);
+        sortAndPrint("Unassigned Tasks", unassignedTasks);
+
+        Set<Task> overlap  = getUnion(List.of(
+                getIntersect(annsTasks, bobsTasks),
+                getIntersect(carolsTasks, bobsTasks),
+                getIntersect(annsTasks, carolsTasks)
+        ));
+        sortAndPrint("Assigned to Multiples", overlap, sortByPriority);
+
+        List<Task> overlapping  = new ArrayList<>();
+        for (Set<Task> set : sets) {
+            Set<Task> dupes = getIntersect(set, overlap);
+            overlapping.addAll(dupes);
+        }
+
+        Comparator<Task> priorityNatural = sortByPriority.thenComparing(Comparator.naturalOrder());
+        sortAndPrint("Overlapping", overlapping, priorityNatural);
     }
 
     private static void sortAndPrint(String header, Collection<Task> collection) {
@@ -57,44 +70,25 @@ public class Main {
 
     }
 
-    private static void getUnion(Set<Task> additionalTasks) {
-
-        // Union of all sets
-        Set<Task> allTasks = new HashSet<>();
-        allTasks.addAll(TaskData.getTasks("ann"));
-        allTasks.addAll(TaskData.getTasks("bob"));
-        allTasks.addAll(TaskData.getTasks("carol"));
-        allTasks.addAll(additionalTasks);
-
-        sortAndPrint("All new tasks", allTasks, sortByPriority);
+    private static Set<Task> getUnion(List<Set<Task>> sets) {
+        Set<Task> union = new HashSet<>();
+        for (var taskSet : sets) {
+            union.addAll(taskSet);
+        }
+        return union;
     }
 
-    private static void getIntersect(Set<Task> task1, Set<Task> task2) {
+    private static Set<Task> getIntersect(Set<Task> task1, Set<Task> task2) {
 
-        Set<Task> taskA = new HashSet<>(task1);
-        Set<Task> taskB = new HashSet<>(task2);
-
-        Set<Task> intersectAB = new HashSet<>(taskA);
-        intersectAB.retainAll(taskB); // retains common argument Set
-
-        sortAndPrint("(A ∩ B) Intersect task (A) and task (B)", intersectAB);
+        Set<Task> intersect = new HashSet<>(task1);
+        intersect.retainAll(task2); // retains common argument Set
+        return intersect;
     }
 
+    private static Set<Task> getDifference(Set<Task> task1, Set<Task> task2) {
 
-    private static void getDifference(Set<Task> task1, Set<Task> task2) {
-
-        Set<Task> taskA = new HashSet<>(task1);
-        Set<Task> taskB = new HashSet<>(task2);
-
-        Set<Task> differenceAB = new HashSet<>(taskA);
-        differenceAB.removeAll(taskB); // removes second argument's Set
-
-
-
-        sortAndPrint("(A - B) (A) tasks minus (B) tasks", differenceAB);
+        Set<Task> difference = new HashSet<>(task1);
+        difference.removeAll(task2); // removes second argument's Set
+        return difference;
     }
-
-
-
-
 }

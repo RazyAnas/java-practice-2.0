@@ -46,13 +46,6 @@ public class TaskData {
             Data Access,Write Views,Low
             """;
 
-    public static String getTasks() {
-        return tasks;
-    }
-
-    public static void setTasks(String additionalTasks) {
-        TaskData.tasks = tasks.concat(additionalTasks);
-    }
 
     public static Set<Task> getTasks(String owner) { // owner is the assignee = assigned person
 
