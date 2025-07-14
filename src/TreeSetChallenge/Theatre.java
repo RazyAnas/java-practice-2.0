@@ -3,46 +3,82 @@ package TreeSetChallenge;
 import java.util.NavigableSet;
 import java.util.TreeSet;
 
+
 public class Theatre {
 
     private String theatreName;
-    // "an integer for seats in each row" --> e.g., 10 seats in a row.
-    private int seatsPerRow; // how many seats are in a single row
-    // "a field for the seats themselves" --> this means the actual seats, like maybe a 2D array showing seat availability (booked or not).
-    NavigableSet<String> seats = new TreeSet<>();
+    private int seatsPerRow;
     private int totalRows;
+    private NavigableSet<Seat> seats = new TreeSet<>();
 
     public Theatre(String theatreName, int seatsPerRow, int totalRows) {
         this.theatreName = theatreName;
         this.seatsPerRow = seatsPerRow;
         this.totalRows = totalRows;
-        // auto-create seats like A1, A2, ..., B1, B2, ...
+
         for (char row = 'A'; row < 'A' + totalRows; row++) {
             for (int seatNum = 1; seatNum <= seatsPerRow; seatNum++) {
-                String seatLabel = row + String.format("%03d", seatNum);
-                seats.add(seatLabel);
+                seats.add(new Seat(row, seatNum));
             }
         }
     }
 
     public void printSeatMap() {
-
         char currentRow = ' ';
-
-        for (String s : seats) {
-            if (s.charAt(0) != currentRow) {
-                if (currentRow != ' ') System.out.println(); // break line for new row
-                currentRow = s.charAt(0);
+        for (Seat seat : seats) {
+            if (seat.row != currentRow) {
+                if (currentRow != ' ') System.out.println();
+                currentRow = seat.row;
             }
-            System.out.print(s + " ");
-        }
 
+            if (seat.isReserved) {
+                StringBuilder striked = new StringBuilder();
+                for (char ch : seat.label.toCharArray()) {
+                    striked.append(ch).append("\u0336");
+                }
+                System.out.print(striked + " ");
+            } else {
+                System.out.print(seat.label + " ");
+            }
+        }
+        System.out.println();
     }
 
-    // booking agent books the seat
-    public void bookSeat(String seatLabel) {
+    public void bookSeat(String label) {
+        for (Seat seat : seats) {
+            if (seat.label.equals(label)) {
+                if (seat.isReserved) {
+                    System.out.println(label + " is already booked.");
+                } else {
+                    seat.isReserved = true;
+                    System.out.println(label + " booked successfully.");
+                }
+                return;
+            }
+        }
+        System.out.println("Seat " + label + " doesn't exist.");
+    }
+
+    class Seat implements Comparable<Seat>{
+        private char row;
+        private int number;
+        private String label;
+        private boolean isReserved = false;
 
 
+        public Seat(char row, int number) {
+            this.row = row;
+            this.number = number;
+            this.label = row + String.format("%03d", number);
+        }
+
+        @Override
+        public int compareTo(Seat other) {
+            if (this.row == other.row) {
+                return this.number - other.number;
+            }
+            return this.row - other.row;
+        }
     }
 
 }
