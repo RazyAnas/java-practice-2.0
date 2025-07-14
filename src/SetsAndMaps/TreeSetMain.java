@@ -94,18 +94,20 @@ public class TreeSetMain {
 
         Contact marion = new Contact("Maid Marion");
         // headSet = items before (like head → top part → earlier)
-        var headSet = fullSet.headSet(marion, true);
+        var headSet = fullSet.headSet(marion, true); // inclusive = true
         headSet.forEach(System.out::println);
 
         System.out.println(divider); // divider
 
         // tailSet = items after (like tail → back part → later)
-        var tailSet = fullSet.tailSet(marion, false);
+        var tailSet = fullSet.tailSet(marion, false); // inclusive = false
         tailSet.forEach(System.out::println);
 
         System.out.println(divider); // divider
 
-
+        Contact linus = new Contact("Linus Van Pelt");
+        var subset = fullSet.subSet(linus, false, marion, true); // subset includes the first contact linus and excludes the second contact marion, but we can also use overload
+        subset.forEach(System.out::println);
     }
 }
 
