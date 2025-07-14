@@ -1,5 +1,7 @@
 package TreeSetChallenge;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NavigableSet;
 import java.util.TreeSet;
 
@@ -12,6 +14,7 @@ public class Theatre {
     private NavigableSet<Seat> seats = new TreeSet<>();
 
     public Theatre(String theatreName, int seatsPerRow, int totalRows) {
+
         this.theatreName = theatreName;
         this.seatsPerRow = seatsPerRow;
         this.totalRows = totalRows;
@@ -24,6 +27,7 @@ public class Theatre {
     }
 
     public void printSeatMap() {
+
         char currentRow = ' ';
         for (Seat seat : seats) {
             if (seat.row != currentRow) {
@@ -45,6 +49,7 @@ public class Theatre {
     }
 
     public void bookSeat(String label) {
+
         for (Seat seat : seats) {
             if (seat.label.equals(label)) {
                 if (seat.isReserved) {
@@ -59,7 +64,47 @@ public class Theatre {
         System.out.println("Seat " + label + " doesn't exist.");
     }
 
+    public void reserveSeats(int count, char fromRow, char toRow, int fromSeatNum, int toSeatNum) {
+        for (char row = fromRow; row <= toRow; row++) {
+            for (int seatStart = fromSeatNum; seatStart <= toSeatNum - count + 1; seatStart++) {
+
+                boolean allAvailable = true;
+                List<Seat> block = new ArrayList<>();
+
+                for (int i = 0; i < count; i++) {
+                    String seatLabel = row + String.format("%03d", seatStart + i);
+                    Seat seat = findSeatByLabel(seatLabel);
+                    if (seat == null || seat.isReserved) {
+                        allAvailable = false;
+                        break;
+                    }
+                    block.add(seat);
+                }
+
+
+                if (allAvailable) {
+                    for (Seat seat : block) {
+                        seat.isReserved = true; // direct booking without extra check
+                        System.out.println(seat.label + " booked successfully.");
+                    }
+                    return; // done booking
+                }
+            }
+        }
+    }
+    private Seat findSeatByLabel(String label) {
+        for (Seat seat : seats) {
+            if (seat.label.equals(label)) {
+                return seat;
+            }
+        }
+        return null; // not found
+    }
+
+
+
     class Seat implements Comparable<Seat>{
+
         private char row;
         private int number;
         private String label;
@@ -79,6 +124,7 @@ public class Theatre {
             }
             return this.row - other.row;
         }
+
     }
 
 }
