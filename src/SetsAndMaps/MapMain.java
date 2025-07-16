@@ -14,7 +14,7 @@ public class MapMain {
 
         List<Contact> fullList = new ArrayList<>(phones);
         fullList.addAll(emails);
-        fullList.forEach(System.out::println); // records in alist are by default in insertion order, and include all duplicates
+        fullList.forEach(System.out::println); // records in a list are by default in insertion order, and include all duplicates
         System.out.println("--------------------------------");
 
         Map<String, Contact> contacts = new HashMap<>();
