@@ -8,7 +8,6 @@ import java.util.Map;
 public class MapMain {
 
     public static void main(String[] args) {
-
         List<Contact> phones = ContactData.getData("phone");
         List<Contact> emails = ContactData.getData("email");
 
@@ -17,11 +16,13 @@ public class MapMain {
         fullList.forEach(System.out::println); // records in a list are by default in insertion order, and include all duplicates
         System.out.println("--------------------------------");
 
+        // hashmap
         Map<String, Contact> contacts = new HashMap<>();
 
         for (Contact contact : fullList) {
             contacts.put(contact.getName(), contact); // takes key and a value, and inserts what's called Entry into the map
         }
+
         contacts.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
 
         System.out.println("--------------------------------");

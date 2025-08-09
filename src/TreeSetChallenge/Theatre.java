@@ -101,8 +101,6 @@ public class Theatre {
         return null; // not found
     }
 
-
-
     class Seat implements Comparable<Seat>{
 
         private char row;
