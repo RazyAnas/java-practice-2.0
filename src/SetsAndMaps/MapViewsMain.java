@@ -1,0 +1,36 @@
+package SetsAndMaps;
+
+import java.util.*;
+
+public class MapViewsMain {
+
+    public static void main(String[] args) {
+
+        Map<String, Contact> contacts = new HashMap<>();
+        ContactData.getData("phone").forEach(c -> contacts.put(c.getName(), c));
+        ContactData.getData("email").forEach(c-> contacts.put(c.getName(), c));
+
+        Set<String> keysView = contacts.keySet();
+        System.out.println(keysView);
+
+        Set<String> copyOfKeys = new TreeSet<>(contacts.keySet()); // ordered
+        System.out.println(copyOfKeys);
+
+        if (contacts.containsKey("Linus Van Pelt")) {
+            System.out.println("Linus and I go away back, so of course I have info");
+        }
+
+        keysView.remove("Daffy Duck");
+        System.out.println(keysView);
+        contacts.forEach((k,v) -> System.out.println(v));
+
+        copyOfKeys.remove("Linus Van Pelt");
+        System.out.println(copyOfKeys);
+        contacts.forEach((k,v) -> System.out.println(v));
+
+        keysView.retainAll(List.of("Linus Van Pelt", "Charlie Brown", "Robin Hood", "Mickey Mouse"));
+        System.out.println(keysView);
+        contacts.forEach((k,v) -> System.out.println(v));
+
+    }
+}

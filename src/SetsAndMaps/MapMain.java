@@ -75,5 +75,43 @@ public class MapMain {
                 ));
         contacts.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
 
+        System.out.println("---------------------------------");
+        for (String contactName : new String[] {"Daisy Duck", "Daffy duck", "Scrooge McDuck"}) {
+            contacts.computeIfAbsent(contactName, k -> new Contact(k));
+        }
+        contacts.forEach((k,v) -> System.out.println("Key=" + k + ", value=" + v));
+
+        System.out.println("---------------------------------");
+        for (String contactName : new String[] {"Daisy Duck", "Daffy duck", "Scrooge McDuck"}) {
+            contacts.computeIfPresent(contactName, (k,v) ->{
+                    v.addEmail("Fun Place"); return v; });
+        }
+        contacts.forEach((k,v) -> System.out.println("Key=" + k + ", value=" + v));
+
+        System.out.println("----------------------------------");
+        contacts.replaceAll((k, v) -> {
+            String newEmail = k.replaceAll(" ", "") + "@funplace.com";
+            v.replaceEmailIfExists("DDuck@funplace.com", newEmail);
+            return v;
+        });
+        contacts.forEach((k,v)-> System.out.println("key=" + k + ", value= " + v));
+
+        Contact daisy = new Contact("Daisy Jane Duck", "daisyj@duck.com");
+        Contact replaceContact = contacts.replace("Daisy Duck", daisy);
+        System.out.println("daisy = " + daisy);
+        System.out.println("replacedContact = " + replaceContact);
+        contacts.forEach((k,v) -> System.out.println("key= " + k + ", value= " + v));
+
+        System.out.println("----------------------------");
+        Contact updatedDaisy = replaceContact.mergeContactData(daisy);
+        System.out.println("updatedDaisy = " + updatedDaisy);
+        boolean success = contacts.replace("Daisy Duck", daisy, updatedDaisy);
+        if (success) {
+            System.out.println("Successfully replaced element");
+        } else {
+            System.out.println("Did not match on both key: %s and value: %s %n".formatted("Daisy Duck", replaceContact));
+        }
+        contacts.forEach((k,v) -> System.out.println("key= " + k + ", value= " + v));
+
     }
 }
