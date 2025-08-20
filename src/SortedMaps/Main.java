@@ -5,8 +5,8 @@ import java.util.*;
 
 public class Main {
 
-    private static Map<String, Purchase> purchases = new LinkedHashMap<>();
-    private static NavigableMap<String, Student> students = new TreeMap<>();
+    private static final Map<String, Purchase> purchases = new LinkedHashMap<>();
+    private static final NavigableMap<String, Student> students = new TreeMap<>();
 
     public static void main(String[] args) {
         Course jmc = new Course("jmc101", "Java Master Class",
@@ -119,9 +119,7 @@ public class Main {
             System.out.println(key + ": " + value);
             for (Purchase p : value) {
                 weeklyCounts.merge(p.courseId() , 1,
-                        (prev, current) -> {
-                    return prev + current;
-                });
+                        Integer::sum);
             }
         });
         System.out.printf("Week %d Purchases = %s%n", period, weeklyCounts);
