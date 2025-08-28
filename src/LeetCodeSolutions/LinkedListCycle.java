@@ -36,13 +36,12 @@ public class LinkedListCycle {
         ListNode slow = head != null ? head : null; // slow pointer
         ListNode fast = (head != null && head.next != null) ? head : null; // fast pointer
 
-        while (slow != null && fast != null && slow.next != null && fast.next.next != null) {
+        while (fast != null && fast.next != null) {
             slow = slow.next;
-            if (fast == slow) return true;
             fast = fast.next.next;
+
             if (fast == slow) return true;
         }
-
         return false;
     }
 }
