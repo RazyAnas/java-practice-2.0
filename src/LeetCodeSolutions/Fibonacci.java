@@ -6,23 +6,29 @@ public class Fibonacci {
     public static void main(String[] args) {
         System.out.println(fib(5));
     }
-
-    public static HashMap<Integer, Integer> map = new HashMap<>();
+//
+//    public static HashMap<Integer, Integer> map = new HashMap<>();
 
     public static int fib(int n) {
+//
+//
+//        // base condition
+//        if (n == 0 || n == 1) return n;
+//
+//        // check if we already have its fibo
+//        if (map.get(n) != null) {
+//            return map.get(n);
+//        }
+//
+//        int fibo = fib(n-1) + fib(n-2);
+//        map.put(n, fibo);
+//        return fibo;
+
+        // method 2 using binets formula
+
+        return (int) ((Math.pow(1 + Math.sqrt(5), n) - Math.pow(1 - Math.sqrt(5), n)) / (Math.pow(2, n) * Math.sqrt(5)));
 
 
-        // base condition
-        if (n == 0 || n == 1) return n;
-
-        // check if we already have its fibo
-        if (map.get(n) != null) {
-            return map.get(n);
-        }
-
-        int fibo = fib(n-1) + fib(n-2);
-        map.put(n, fibo);
-        return fibo;
 
     }
 }
