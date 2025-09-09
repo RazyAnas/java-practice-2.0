@@ -1,0 +1,26 @@
+package LeetCodeSolutions;
+
+public class BinarySearchUpperBound {
+    public static void main(String[] args) {
+        int[] arr = {1,2,2,3};
+        int x = 9;
+        System.out.println(upperBound(arr, x));
+    }
+    public static int upperBound(int[] nums, int x) {
+        int low = 0;
+        int high = nums.length - 1;
+        int upperBound = nums.length;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            if (nums[mid] >= x) {
+                upperBound = Math.min(upperBound, mid);
+                low = mid+1;
+            } else if (nums[mid] < x) {
+                high = mid-1;
+            }
+
+        }
+        return upperBound;
+    }
+}
