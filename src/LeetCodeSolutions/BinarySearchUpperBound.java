@@ -13,11 +13,11 @@ public class BinarySearchUpperBound {
         while (low <= high) {
             int mid = low + (high - low) / 2;
 
-            if (nums[mid] >= x) {
-                upperBound = Math.min(upperBound, mid);
-                low = mid+1;
-            } else if (nums[mid] < x) {
-                high = mid-1;
+            if (nums[mid] > x) {
+                upperBound = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
 
         }
