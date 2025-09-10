@@ -1,5 +1,5 @@
 package LeetCodeSolutions;
-
+// "Where can something bigger than x start?"
 public class BinarySearchUpperBound {
     public static void main(String[] args) {
         int[] arr = {1,2,2,3};

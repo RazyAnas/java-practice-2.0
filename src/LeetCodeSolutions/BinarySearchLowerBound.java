@@ -1,5 +1,5 @@
 package LeetCodeSolutions;
-
+// "Where can x fit in without breaking the order?"
 public class BinarySearchLowerBound {
     public static void main(String[] args) {
         int[] arr = {3,5,8,15,19};
@@ -14,7 +14,7 @@ public class BinarySearchLowerBound {
             int mid = low + (high - low) / 2;
 
             if (nums[mid] >= x) {
-                lowerBound = Math.min(lowerBound, mid);
+                lowerBound = mid;
 
                 high = mid-1;
 
