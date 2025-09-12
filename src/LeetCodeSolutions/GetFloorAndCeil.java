@@ -39,11 +39,6 @@ public class GetFloorAndCeil {
             }
         }
 
-
-
-
-
-
         // Brute force
 //        for (int num : nums) {
 //            if (num >= x) {
