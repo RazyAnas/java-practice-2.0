@@ -16,6 +16,7 @@ public class KokoEatingBanana {
                 low = mid + 1;
             }
         }
+
         return Math.toIntExact(low);
     }
 
