@@ -56,4 +56,5 @@ public class PainterPartitionProblemType {
             return days;
         }
 
+
 }
