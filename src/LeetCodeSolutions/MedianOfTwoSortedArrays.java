@@ -18,7 +18,6 @@ public class MedianOfTwoSortedArrays {
 
         // what we have to do?:
         // is do binary search in nums1 and then nums2 separately
-
         int[] merged = new int[array1.length + array2.length];
 
         // Copy elements from array1 to mergedArray
