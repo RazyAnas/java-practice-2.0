@@ -3,6 +3,7 @@ package LeetCodeSolutions;
 import java.util.Arrays;
 
 public class SelectionSortAlgorithm {
+    // hard definition --> takes minimum to the front
 
     // it basically says to select the minimums and swap
     // i think this can be done with two pointers
