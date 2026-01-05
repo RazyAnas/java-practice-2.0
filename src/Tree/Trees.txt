@@ -1,0 +1,12 @@
+Introduction to binary Trees:
+Head --> root, and it has children.
+leaf node --> doesn't have children.
+node and beneath ---> sub-trees
+
+Types:
+Full BT = either can have 0 or 2 children
+Complete BT = all levels are completely filled except the last level,
+              the last level has all nodes on as left as possible.
+Perfect BT = all "leaf nodes" are at same level.
+Balanced BT = height of tree at max log(N), where N = nodes
+Degenerate Tree = n = 4 straight line every node has a single child.

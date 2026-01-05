@@ -13,18 +13,24 @@ public class InsertionSortAlgorithm {
     }
 
     public static int[] insertionSort(int[] nums) {
+        int n = nums.length;
 
-        // keep going through each number select and swap with all other numbers until right > left keep going right--
-        // if we have to compare one element with all the elements we should start two pointer from left and keep increasing right+1 left
-        int n = nums.length - 1;
-        int[] arr = new int[n+1];
-        for (int i = 0; i < n; i++) {
-            // current element inside the arr to be inserted
-            for (int j = 0; j < n; j++) {
+        // Start from the second element (index 1)
+        for (int i = 1; i < n; i++) {
+            int key = nums[i];   // element to insert in sorted portion
+            int j = i - 1;
 
+            // Shift all elements greater than key to one position ahead
+            while (j >= 0 && nums[j] > key) {
+                nums[j + 1] = nums[j];
+                j--;
             }
 
+            // Place the key at its correct position
+            nums[j + 1] = key;
         }
-        return arr;
+
+        return nums;
     }
+
 }
